@@ -14,6 +14,15 @@
 		E185DBB3196B479D00934001 /* ScreenshotsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E185DBB2196B479D00934001 /* ScreenshotsTests.swift */; };
 		E185DBBD196B47D700934001 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185DBBC196B47D700934001 /* Photos.framework */; };
 		E185DBBF196B485700934001 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E185DBBE196B485700934001 /* AVFoundation.framework */; };
+		E1A260C71971AB31002EAC59 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A260C61971AB31002EAC59 /* NotificationCenter.framework */; };
+		E1A260CC1971AB31002EAC59 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A260CB1971AB31002EAC59 /* TodayViewController.swift */; };
+		E1A260CE1971AB31002EAC59 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A260CD1971AB31002EAC59 /* MainInterface.storyboard */; };
+		E1A260D11971AB31002EAC59 /* Screenshots-Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E1A260C41971AB31002EAC59 /* Screenshots-Widget.appex */; };
+		E1A260D91971AF2D002EAC59 /* PhotosHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A260D81971AF2D002EAC59 /* PhotosHelper.swift */; };
+		E1A260DA1971AF2D002EAC59 /* PhotosHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A260D81971AF2D002EAC59 /* PhotosHelper.swift */; };
+		E1A260DC1971C30E002EAC59 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A260DB1971C30E002EAC59 /* Screenshot.swift */; };
+		E1A260DD1971C30E002EAC59 /* Screenshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A260DB1971C30E002EAC59 /* Screenshot.swift */; };
+		E1A260DE19720E47002EAC59 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E185DBA1196B479D00934001 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,7 +33,35 @@
 			remoteGlobalIDString = E185DB99196B479D00934001;
 			remoteInfo = Screenshots;
 		};
+		E1A260CF1971AB31002EAC59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E185DB92196B479D00934001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1A260C31971AB31002EAC59;
+			remoteInfo = "Screenshots-Widget";
+		};
+		E1A260D21971AB31002EAC59 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E185DB92196B479D00934001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1A260C31971AB31002EAC59;
+			remoteInfo = "Screenshots-Widget";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E1A260D71971AB31002EAC59 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E1A260D11971AB31002EAC59 /* Screenshots-Widget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E185DB9A196B479D00934001 /* Screenshots.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Screenshots.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +75,13 @@
 		E185DBB2196B479D00934001 /* ScreenshotsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotsTests.swift; sourceTree = "<group>"; };
 		E185DBBC196B47D700934001 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		E185DBBE196B485700934001 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E1A260C41971AB31002EAC59 /* Screenshots-Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Screenshots-Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A260C61971AB31002EAC59 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		E1A260CA1971AB31002EAC59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1A260CB1971AB31002EAC59 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		E1A260CD1971AB31002EAC59 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		E1A260D81971AF2D002EAC59 /* PhotosHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotosHelper.swift; path = Shared/PhotosHelper.swift; sourceTree = SOURCE_ROOT; };
+		E1A260DB1971C30E002EAC59 /* Screenshot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Screenshot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +101,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1A260C11971AB31002EAC59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A260C71971AB31002EAC59 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -66,6 +118,8 @@
 				E185DBBE196B485700934001 /* AVFoundation.framework */,
 				E185DB9C196B479D00934001 /* Screenshots */,
 				E185DBAF196B479D00934001 /* ScreenshotsTests */,
+				E1A260C81971AB31002EAC59 /* Screenshots-Widget */,
+				E1A260C51971AB31002EAC59 /* Frameworks */,
 				E185DB9B196B479D00934001 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +129,7 @@
 			children = (
 				E185DB9A196B479D00934001 /* Screenshots.app */,
 				E185DBAC196B479D00934001 /* ScreenshotsTests.xctest */,
+				E1A260C41971AB31002EAC59 /* Screenshots-Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,6 +139,8 @@
 			children = (
 				E185DB9F196B479D00934001 /* AppDelegate.swift */,
 				E185DBA1196B479D00934001 /* ViewController.swift */,
+				E1A260D81971AF2D002EAC59 /* PhotosHelper.swift */,
+				E1A260DB1971C30E002EAC59 /* Screenshot.swift */,
 				E185DBA3196B479D00934001 /* Main.storyboard */,
 				E185DBA6196B479D00934001 /* Images.xcassets */,
 				E185DB9D196B479D00934001 /* Supporting Files */,
@@ -117,6 +174,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E1A260C51971AB31002EAC59 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1A260C61971AB31002EAC59 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1A260C81971AB31002EAC59 /* Screenshots-Widget */ = {
+			isa = PBXGroup;
+			children = (
+				E1A260CB1971AB31002EAC59 /* TodayViewController.swift */,
+				E1A260CD1971AB31002EAC59 /* MainInterface.storyboard */,
+				E1A260C91971AB31002EAC59 /* Supporting Files */,
+			);
+			path = "Screenshots-Widget";
+			sourceTree = "<group>";
+		};
+		E1A260C91971AB31002EAC59 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1A260CA1971AB31002EAC59 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,10 +210,13 @@
 				E185DB96196B479D00934001 /* Sources */,
 				E185DB97196B479D00934001 /* Frameworks */,
 				E185DB98196B479D00934001 /* Resources */,
+				E1A260D71971AB31002EAC59 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E1A260D01971AB31002EAC59 /* PBXTargetDependency */,
+				E1A260D31971AB31002EAC59 /* PBXTargetDependency */,
 			);
 			name = Screenshots;
 			productName = Screenshots;
@@ -155,6 +241,23 @@
 			productReference = E185DBAC196B479D00934001 /* ScreenshotsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E1A260C31971AB31002EAC59 /* Screenshots-Widget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1A260D61971AB31002EAC59 /* Build configuration list for PBXNativeTarget "Screenshots-Widget" */;
+			buildPhases = (
+				E1A260C01971AB31002EAC59 /* Sources */,
+				E1A260C11971AB31002EAC59 /* Frameworks */,
+				E1A260C21971AB31002EAC59 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Screenshots-Widget";
+			productName = "Screenshots-Widget";
+			productReference = E1A260C41971AB31002EAC59 /* Screenshots-Widget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -170,6 +273,9 @@
 					E185DBAB196B479D00934001 = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = E185DB99196B479D00934001;
+					};
+					E1A260C31971AB31002EAC59 = {
+						CreatedOnToolsVersion = 6.0;
 					};
 				};
 			};
@@ -188,6 +294,7 @@
 			targets = (
 				E185DB99196B479D00934001 /* Screenshots */,
 				E185DBAB196B479D00934001 /* ScreenshotsTests */,
+				E1A260C31971AB31002EAC59 /* Screenshots-Widget */,
 			);
 		};
 /* End PBXProject section */
@@ -209,6 +316,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1A260C21971AB31002EAC59 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A260CE1971AB31002EAC59 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -217,7 +332,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E185DBA2196B479D00934001 /* ViewController.swift in Sources */,
+				E1A260DC1971C30E002EAC59 /* Screenshot.swift in Sources */,
 				E185DBA0196B479D00934001 /* AppDelegate.swift in Sources */,
+				E1A260D91971AF2D002EAC59 /* PhotosHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +346,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1A260C01971AB31002EAC59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A260DA1971AF2D002EAC59 /* PhotosHelper.swift in Sources */,
+				E1A260DD1971C30E002EAC59 /* Screenshot.swift in Sources */,
+				E1A260DE19720E47002EAC59 /* ViewController.swift in Sources */,
+				E1A260CC1971AB31002EAC59 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -236,6 +364,16 @@
 			isa = PBXTargetDependency;
 			target = E185DB99196B479D00934001 /* Screenshots */;
 			targetProxy = E185DBAD196B479D00934001 /* PBXContainerItemProxy */;
+		};
+		E1A260D01971AB31002EAC59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1A260C31971AB31002EAC59 /* Screenshots-Widget */;
+			targetProxy = E1A260CF1971AB31002EAC59 /* PBXContainerItemProxy */;
+		};
+		E1A260D31971AB31002EAC59 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1A260C31971AB31002EAC59 /* Screenshots-Widget */;
+			targetProxy = E1A260D21971AB31002EAC59 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -338,6 +476,7 @@
 				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "EBEAFB05-4026-467F-A401-483053AB1376";
 			};
 			name = Debug;
 		};
@@ -349,6 +488,7 @@
 				INFOPLIST_FILE = Screenshots/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "EBEAFB05-4026-467F-A401-483053AB1376";
 			};
 			name = Release;
 		};
@@ -388,6 +528,32 @@
 			};
 			name = Release;
 		};
+		E1A260D41971AB31002EAC59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Screenshots-Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		E1A260D51971AB31002EAC59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Screenshots-Widget/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -407,12 +573,22 @@
 				E185DBB8196B479D00934001 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E185DBB9196B479D00934001 /* Build configuration list for PBXNativeTarget "ScreenshotsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E185DBBA196B479D00934001 /* Debug */,
 				E185DBBB196B479D00934001 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1A260D61971AB31002EAC59 /* Build configuration list for PBXNativeTarget "Screenshots-Widget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1A260D41971AB31002EAC59 /* Debug */,
+				E1A260D51971AB31002EAC59 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
