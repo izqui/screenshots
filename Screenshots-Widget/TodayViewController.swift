@@ -11,19 +11,19 @@ import NotificationCenter
 
 class TodayViewController: UIViewController {
         
-    @IBOutlet var label: UILabel
+    @IBOutlet var label: UILabel?
     var vc: UIViewController?
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        self.label.text = String(UIScreen.mainScreen().bounds.size.height)
+        super.viewDidLoad()
+        self.label!.text = String(Int(UIScreen.mainScreen().bounds.size.height))
         
         var sc = PhotosHelper.sharedHelper().getScreenshots()
-        self.label.text = String(sc.count)
+        self.label!.text = String(sc.count)
         //PhotosHelper.sharedHelper().removeImages(sc, cb: {})
         
-        vc = ViewController(frame: self.view.frame)
-        self.view.addSubview(vc!.view)
+        //vc = ViewController(coder: nil)
+        //self.view.addSubview(vc!.view)
         // Do any additional setup after loading the view from its nib.
     }
     

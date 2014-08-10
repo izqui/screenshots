@@ -9,34 +9,41 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UICollectionViewController {
     
     var screenshots = PhotosHelper.sharedHelper().getScreenshots()
-    var collectionView: UICollectionView
-    
-    init(frame: CGRect) {
-        
-        var layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Vertical
-        layout.itemSize = CGSize(width: CGRectGetWidth(frame)/6, height: CGRectGetWidth(frame)/6)
-        self.collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
-        self.collectionView.scrollEnabled = true
-        super.init(coder: nil)
-        //self.view.frame = UIScreen.mainScreen().bounds
-    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-
+        self.title = "Screenshots".lastPathComponent
+        self.navigationItem.leftBarButtonItem = ClosureBarButtonItem(title: "Remove all", style: .Plain) {
+            o in
+            
+            PhotosHelper.sharedHelper().removeImages(self.screenshots, cb: nil)
+        }
+        
+        /*b.callback ({
+            (o: Any?) in
+            PhotosHelper.sharedHelper().removeImages(self.screenshots, cb: nil)
+        })*/
+        
+        
+        let frame = self.view.bounds
+        let cellSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? CGRectGetWidth(frame)/3 : CGRectGetWidth(frame)/6
+        
+        var layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .Vertical
+        layout.itemSize = CGSize(width: cellSize, height: cellSize)
+        layout.minimumInteritemSpacing = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? 0 : cellSize/5
+        
+        self.collectionView = UICollectionView(frame: frame, collectionViewLayout: layout)
+        self.collectionView.backgroundColor = UIColor.whiteColor()
+        self.collectionView.bounces = true
+        self.collectionView.alwaysBounceVertical = true
+        
         self.collectionView.registerClass(NSClassFromString("UICollectionViewCell"), forCellWithReuseIdentifier: "cell")
-        
-        self.view.addSubview(self.collectionView)
-        
-        self.collectionView.reloadData()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -45,7 +52,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         self.screenshots = PhotosHelper.sharedHelper().getScreenshots()
         self.collectionView.reloadData()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,19 +59,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
         
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
     
         return screenshots.count
     }
     
-    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
+        cell.backgroundColor = UIColor.yellowColor()
         
         var iv = UIImageView(frame: CGRect(x: 0, y: 0, width:CGRectGetWidth(cell.frame), height:CGRectGetHeight(cell.frame)))
         iv.contentMode = .ScaleAspectFit
@@ -88,14 +95,5 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.addSubview(iv)
         return cell
         
-    }
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        
-        UIView.animateWithDuration(duration) {
-            
-            self.collectionView.frame = self.view.frame
-            self.collectionView.layoutIfNeeded()
-        }
     }
 }

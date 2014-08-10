@@ -9,13 +9,14 @@
 import Foundation
 import Photos
 
+
 extension CGSize: Hashable {
     
-    var hashValue: Int {
+    public var hashValue: Int {
     
     get {
         
-        return "\(Int(self.width))0\(Int(self.height))".toInt()!
+        return [self.width, self.height].hashValue
     }
     }
 }
@@ -36,7 +37,7 @@ class Screenshot {
             
             cb(image)
             
-        } else if _asset {
+        } else if _asset != nil {
             
             PhotosHelper.sharedHelper().getImageForSize(self._asset!, size: size) {
                 
@@ -51,14 +52,9 @@ class Screenshot {
     }
     func removeFromCameraRoll(cb: (Void -> Void)?) {
         
-        if self._asset {
+        if self._asset != nil {
 
-            PhotosHelper.sharedHelper().removeImages([self]) {
-                
-                if cb {
-                    cb!()
-                }
-            }
+            PhotosHelper.sharedHelper().removeImages([self], cb:cb)
         }
     }
     

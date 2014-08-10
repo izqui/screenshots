@@ -36,7 +36,8 @@ class PhotosHelper {
             
             let asset = assets.objectAtIndex(i) as PHAsset
             
-            if (asset.pixelWidth == UIScreen.mainScreen().bounds.size.width*2 && asset.pixelHeight == UIScreen.mainScreen().bounds.size.height*2) || (asset.pixelHeight == UIScreen.mainScreen().bounds.size.width*2 && asset.pixelWidth == UIScreen.mainScreen().bounds.size.height*2) { //UIScreen bounds changes on rotation
+            if (asset.pixelWidth == Int(UIScreen.mainScreen().bounds.size.width*2) && asset.pixelHeight == Int(UIScreen.mainScreen().bounds.size.height*2)) || (asset.pixelHeight == Int(UIScreen.mainScreen().bounds.size.width*2) && asset.pixelWidth == Int(UIScreen.mainScreen().bounds.size.height*2)) {
+                //UIScreen bounds changes on rotation
                 
                 screenshots.append(Screenshot(asset: asset))
             }
@@ -57,7 +58,7 @@ class PhotosHelper {
         
     }
     
-    func removeImages(images: [Screenshot],cb: Void -> Void) {
+    func removeImages(images: [Screenshot], cb: (Void -> Void)?) {
         
         PHPhotoLibrary.sharedPhotoLibrary().performChanges({
             
@@ -77,9 +78,8 @@ class PhotosHelper {
                 
                 if done && !error {
                     
-                    cb()
+                    cb?()
                 }
             })
-        
     }
 }
