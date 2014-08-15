@@ -23,12 +23,22 @@ extension CGSize: Hashable {
 
 class Screenshot {
     
+    enum Orientation {
+        
+        case Portrait
+        case Landscape
+    }
+
     var _asset: PHAsset?
     var _images = Dictionary<CGSize, UIImage>()
+    var orientation: Orientation
+    var realSize: CGSize
     
-    init(asset a: PHAsset) {
+    init(asset a: PHAsset, orientation or: Orientation) {
         
         _asset = a
+        realSize = CGSize(width: _asset!.pixelWidth, height: _asset!.pixelHeight)
+        orientation = or
     }
     
     func imageForSize(size: CGSize, cb: UIImage -> ()) {
@@ -57,5 +67,17 @@ class Screenshot {
             PhotosHelper.sharedHelper().removeImages([self], cb:cb)
         }
     }
+    
+    func activityView(cb: (UIActivityViewController -> ())) {
+        
+        self.imageForSize(realSize) {
+            image in
+            
+            cb(UIActivityViewController(activityItems: [image], applicationActivities: []))
+            return
+        }
+    }
+    
+    
     
 }

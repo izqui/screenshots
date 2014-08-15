@@ -9,26 +9,50 @@
 import UIKit
 import Photos
 
+
 class ViewController: UICollectionViewController {
     
     var screenshots = PhotosHelper.sharedHelper().getScreenshots()
+    
+    @IBOutlet var settingsButton: UIBarButtonItem?
+    var deleteAllButton: ClosureBarButtonItem {
+        get {
+            return ClosureBarButtonItem(title: "Remove all", style: .Plain) {
+                
+                b in
+                
+                PhotosHelper.sharedHelper().removeImages(self.screenshots, cb: nil)
+                
+                return
+            }
+        }
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
-        self.title = "Screenshots".lastPathComponent
-        self.navigationItem.leftBarButtonItem = ClosureBarButtonItem(title: "Remove all", style: .Plain) {
-            o in
+        self.title = "Screenshots"
+        
+        self.navigationItem.leftBarButtonItem = ClosureBarButtonItem(title: "Edit", style: .Plain) {
             
-            PhotosHelper.sharedHelper().removeImages(self.screenshots, cb: nil)
+            b in
+            let button = b as ClosureBarButtonItem
+            
+            self.editing = !self.editing
+            if self.editing {
+                
+                button.title = "Cancel"
+                self.navigationItem.rightBarButtonItem = self.deleteAllButton
+                
+            } else {
+                
+                button.title = "Edit"
+                self.navigationItem.rightBarButtonItem = self.settingsButton
+            }
+            
+            return
         }
-        
-        /*b.callback ({
-            (o: Any?) in
-            PhotosHelper.sharedHelper().removeImages(self.screenshots, cb: nil)
-        })*/
-        
         
         let frame = self.view.bounds
         let cellSize = (UIDevice.currentDevice().userInterfaceIdiom == .Phone) ? CGRectGetWidth(frame)/3 : CGRectGetWidth(frame)/6
@@ -50,10 +74,14 @@ class ViewController: UICollectionViewController {
     
     override func viewDidAppear(animated: Bool) {
         
+       self.reload()
+    }
+    
+    func reload(){
+        
         self.screenshots = PhotosHelper.sharedHelper().getScreenshots()
         self.collectionView.reloadData()
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,7 +100,6 @@ class ViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
         
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as UICollectionViewCell
-        cell.backgroundColor = UIColor.yellowColor()
         
         var iv = UIImageView(frame: CGRect(x: 0, y: 0, width:CGRectGetWidth(cell.frame), height:CGRectGetHeight(cell.frame)))
         iv.contentMode = .ScaleAspectFit
@@ -94,6 +121,23 @@ class ViewController: UICollectionViewController {
         
         cell.addSubview(iv)
         return cell
+    }
+    
+    override func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
         
+        screenshots[indexPath.row].activityView {
+            activity in
+        
+            if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+                
+                UIPopoverController(contentViewController: activity).presentPopoverFromRect(collectionView.layoutAttributesForItemAtIndexPath(indexPath).frame, inView: self.collectionView, permittedArrowDirections: .Up | .Down, animated: true)
+                
+            }
+            else {
+                
+                self.presentViewController(activity, animated: true, completion: nil)
+            }
+            return
+        }
     }
 }

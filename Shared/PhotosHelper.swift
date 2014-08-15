@@ -26,20 +26,31 @@ class PhotosHelper {
         
         return Static.instance!
     }
-    
+    func getScreenSize() -> CGSize {
+        
+        let bounds = UIScreen.mainScreen().bounds
+        if UIDevice.currentDevice().orientation == .Portrait {
+            
+            return CGSize(width: CGRectGetWidth(bounds), height: CGRectGetHeight(bounds))
+        }
+        
+        return CGSize(width: CGRectGetHeight(bounds), height: CGRectGetWidth(bounds))
+    }
     func getScreenshots() -> [Screenshot] {
         
         let assets = PHAsset.fetchAssetsWithMediaType(.Image, options: nil)
         var screenshots: [Screenshot] = []
         
+        let bounds = UIScreen.mainScreen().bounds
+        let screensize = self.getScreenSize()
+        
         for i in 0 ..< assets.count {
             
             let asset = assets.objectAtIndex(i) as PHAsset
             
-            if (asset.pixelWidth == Int(UIScreen.mainScreen().bounds.size.width*2) && asset.pixelHeight == Int(UIScreen.mainScreen().bounds.size.height*2)) || (asset.pixelHeight == Int(UIScreen.mainScreen().bounds.size.width*2) && asset.pixelWidth == Int(UIScreen.mainScreen().bounds.size.height*2)) {
-                //UIScreen bounds changes on rotation
+            if (asset.pixelWidth == Int(screensize.width*2) && asset.pixelHeight == Int(screensize.height*2)) {
                 
-                screenshots.append(Screenshot(asset: asset))
+                screenshots.append(Screenshot(asset: asset, orientation: (self.getScreenSize().width == CGRectGetWidth(bounds)) ? .Portrait : .Landscape ))
             }
             
         }

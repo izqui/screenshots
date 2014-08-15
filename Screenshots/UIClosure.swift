@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
 //TODO: Is it really impossible for this to be an extension?
 public typealias SelectorFunction = (object: AnyObject?) -> ()
+
 class ClosureBarButtonItem: UIBarButtonItem {
     
     private var cb: SelectorFunction?

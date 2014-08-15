@@ -24,6 +24,17 @@
 	<true/>
 	<key>UIMainStoryboardFile</key>
 	<string>Storyboard</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>me.izqui.screenshots</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>screenshots</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
